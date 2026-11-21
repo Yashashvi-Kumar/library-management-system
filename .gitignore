@@ -1,0 +1,13 @@
+# Real database settings (keep private)
+includes/config.php
+
+# Generated when you click "Generate XML"
+books.xml
+
+# macOS / editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log

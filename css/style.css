@@ -1,0 +1,184 @@
+/* =====================================================
+   style.css  -  styling for the whole project
+   ===================================================== */
+
+/* CSS variables: change a colour here and it changes everywhere */
+:root {
+    --primary: #2f5bea;
+    --primary-dark: #2346b8;
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #16a34a;
+    --orange: #ea8a0c;
+    --red: #dc2626;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 { font-size: 1.7rem; margin-bottom: 1rem; }
+h2 { font-size: 1.2rem; margin: 1.5rem 0 .6rem; }
+
+/* ---------- Navigation bar ---------- */
+.navbar {
+    background: #111827;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: .8rem 1.5rem;
+}
+.navbar .brand { color: #fff; font-weight: 700; font-size: 1.15rem; }
+.navbar .brand:hover { text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.nav-links a { color: #d1d5db; }
+.nav-links a:hover { color: #fff; text-decoration: none; }
+.nav-user { color: #9ca3af; font-size: .9rem; }
+
+/* ---------- Layout ---------- */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+.footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* ---------- Cards and forms ---------- */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+.card-narrow { max-width: 440px; margin: 1.5rem auto; }
+
+label { display: block; font-weight: 600; margin: .9rem 0 .3rem; font-size: .92rem; }
+
+input[type=text], input[type=email], input[type=password],
+input[type=number], select {
+    width: 100%;
+    padding: .65rem .8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(47, 91, 234, .15);
+}
+/* JavaScript adds this class to wrong fields */
+input.invalid, select.invalid { border-color: var(--red); }
+
+.js-error { color: var(--red); font-size: .9rem; margin: .7rem 0 0; min-height: 1.2rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: .6rem 1.1rem;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    font-size: .95rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background .15s;
+}
+.btn:hover { background: var(--primary-dark); text-decoration: none; }
+.btn-block { display: block; width: 100%; margin-top: .8rem; }
+.btn-small { padding: .3rem .7rem; font-size: .85rem; }
+.btn-outline { background: transparent; color: var(--primary); }
+.btn-outline:hover { background: #eef2ff; }
+.navbar .btn-outline { color: #fff; border-color: #6b7280; }
+.navbar .btn-outline:hover { background: #374151; }
+.btn-danger { background: var(--red); border-color: var(--red); }
+.btn-danger:hover { background: #b91c1c; }
+
+/* ---------- Alerts ---------- */
+.alert { padding: .7rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: .95rem; }
+.alert-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.alert-error   { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* ---------- Dashboard ---------- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.2rem; }
+.stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: .9rem 1rem;
+    color: var(--muted);
+}
+.stat-green  { border-left-color: var(--green); }
+.stat-orange { border-left-color: var(--orange); }
+.stat-num { display: block; font-size: 1.8rem; font-weight: 700; color: var(--text); }
+
+.toolbar { display: flex; gap: .8rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.toolbar input { flex: 1; min-width: 200px; }
+
+/* ---------- Table ---------- */
+.table-wrap {
+    overflow-x: auto;                 /* scroll sideways on small screens */
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: #f9fafb; font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+tbody tr:hover { background: #f9fafb; }
+tbody tr:last-child td { border-bottom: none; }
+.actions { white-space: nowrap; }
+.inline-form { display: inline; }
+
+.badge { padding: .2rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+.badge-green  { background: #dcfce7; color: #166534; }
+.badge-orange { background: #ffedd5; color: #9a3412; }
+
+/* ---------- Misc ---------- */
+.muted { color: var(--muted); }
+.center { text-align: center; margin-top: 1rem; }
+code { background: #e5e7eb; padding: .1rem .4rem; border-radius: 4px; font-size: .9em; }
+.code-box {
+    background: #111827;
+    color: #e5e7eb;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .85rem;
+    max-height: 350px;
+}
+
+/* ---------- Responsive (phones) ---------- */
+@media (max-width: 600px) {
+    .stats { grid-template-columns: 1fr; }
+    .navbar { padding: .8rem 1rem; }
+    h1 { font-size: 1.4rem; }
+}
